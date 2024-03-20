@@ -141,16 +141,16 @@ class BT2Info:
     def _callback(self, sender, data):
         logger.debug("DEBUG: DATA=%s", data.hex())
 
-        self.data.aux_batt_v = int.from_bytes(data[5:7], byteorder="big") / 10
-        self.data.combined_charging_amps = int.from_bytes(data[7:9], byteorder="big") / 100
+        self.data.batt_v = int.from_bytes(data[5:7], byteorder="big") / 10
+        self.data.batt_charging_amps = int.from_bytes(data[7:9], byteorder="big") / 100
         self.data.controller_temp = int.from_bytes(data[9:10], byteorder="big", signed=True)
         self.data.battery_temp = int.from_bytes(data[10:11], byteorder="big", signed=True)
-        self.data.alternator_v = int.from_bytes(data[11:13], byteorder="big") / 10 #104h
-        self.data.alternator_charging_amps = int.from_bytes(data[13:15], byteorder="big") / 100
-        self.data.alternator_charging_watts = int.from_bytes(data[15:17], byteorder="big")
+#        self.data.alternator_v = int.from_bytes(data[11:13], byteorder="big") / 10 #104h
+#        self.data.alternator_charging_amps = int.from_bytes(data[13:15], byteorder="big") / 100
+#        self.data.alternator_charging_watts = int.from_bytes(data[15:17], byteorder="big")
         self.data.solar_v = int.from_bytes(data[17:19], byteorder="big") / 10
         self.data.solar_charging_amps = int.from_bytes(data[19:21], byteorder="big") / 100
-        self.data.combined_charging_watts = int.from_bytes(data[21:23], byteorder="big")
+        self.data.solar_charging_watts = int.from_bytes(data[21:23], byteorder="big")
         # 10AH reserved
         self.data.aux_batt_v_lowest_day = int.from_bytes(data[25:27], byteorder="big") / 10
         self.data.aux_batt_v_highest_day = int.from_bytes(data[27:29], byteorder="big") / 10
@@ -170,14 +170,16 @@ class BT2Info:
         self.data.accumulated_generated_watts = int.from_bytes(data[59:63], byteorder="big")
         # 11e, 11f reserved
         # 120 high 8 bits reserved
-        self.data.charging_state = bin(int.from_bytes(data[68:69], byteorder="big"))
-        self.data.error_bits_1 = bin(int.from_bytes(data[69:71], byteorder="big"))
-        self.data.error_bits_2 = bin(int.from_bytes(data[71:73], byteorder="big"))
+#        self.data.charging_state = bin(int.from_bytes(data[68:69], byteorder="big"))
+#        self.data.error_bits_1 = bin(int.from_bytes(data[69:71], byteorder="big"))
+#        self.data.error_bits_2 = bin(int.from_bytes(data[71:73], byteorder="big"))
+
 
         # Add locally calculated sensor(s)
-        self.data.solar_input_watts = int(
-            self.data.solar_charging_amps * self.data.solar_v
+        self.data.batt_charge_watts = int(
+            self.data.batt_charging_amps * self.data.batt_v
         )
+
 
         # Publish Home Assistant discovery info to MQTT on first run
         if self.discovery_info_sent is False:
