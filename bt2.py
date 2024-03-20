@@ -198,7 +198,7 @@ class BT2Info:
                 if not "state_topic" in entry:
                     entry["state_topic"] = f"renogy-bt2/{entry['unique_id']}"
                 if not "device" in entry:
-                    entry["device"] = {"name": "Renogy DCC50S", "identifiers": bt2.name}
+                    entry["device"] = {"name": "Renogy Rover", "identifiers": bt2.name}
 
                 logger.debug(
                     f"DISCOVERY_PUB=homeassistant/sensor/{entry['object_id']}/config\n"
