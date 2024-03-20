@@ -12,17 +12,21 @@
 
 #mqtt:
 #  sensor:
-- name: 'House Battery Voltage'
-  object_id: 'bt2_aux_batt_v'
+- name: 'Battery Voltage'
+  object_id: 'bt2_batt_v'
   device_class: 'voltage'
   unit_of_measurement: 'V'
   #force_update: True
-                        
 
-- name: 'Combined Charging Amps'
-  object_id: 'bt2_combined_charging_amps'
+- name: 'Battery Charging Current'
+  object_id: 'bt2_batt_charging_amps'
   device_class: 'current'
   unit_of_measurement: 'A'
+
+- name: 'Battery Charging Power'
+  object_id: 'bt2_batt_charge_watts'
+  device_class: 'power'
+  unit_of_measurement: 'W'
 
 - name: 'Controller Temp'
   object_id: 'bt2_controller_temp'
@@ -34,106 +38,73 @@
   device_class: 'temperature'
   unit_of_measurement: 'C'
 
-- name: 'Starter Battery Voltage'
-  object_id: 'bt2_alternator_v'
-  device_class: 'voltage'
-  unit_of_measurement: 'V'
-
-- name: 'Alternator Charging Amps'
-  object_id: 'bt2_alternator_charging_amps'
-  device_class: 'current'
-  unit_of_measurement: 'A'
-
-- name: 'Alternator Charging Power'
-  object_id: 'bt2_alternator_charging_watts'
-  device_class: 'power'
-  unit_of_measurement: 'W'
-
 - name: 'Solar Voltage'
   object_id: 'bt2_solar_v'
   device_class: 'voltage'
   unit_of_measurement: 'V'
 
-- name: 'Solar Charging Amps'
+- name: 'Solar Amps'
   object_id: 'bt2_solar_charging_amps'
   device_class: 'current'
   unit_of_measurement: 'A'
 
-- name: 'Combined Charging Power'
-  object_id: 'bt2_combined_charging_watts'
+- name: 'Solar Power'
+  object_id: 'bt2_solar_charging_watts'
   device_class: 'power'
   unit_of_measurement: 'W'
 
-- name: 'House Battery - lowest voltage today'
+- name: 'Today - Battery - Lowest voltage'
   object_id: 'bt2_aux_batt_v_lowest_day'
   device_class: 'voltage'
   unit_of_measurement: 'V'
 
-- name: 'House Battery - highest voltage today'
+- name: 'Today - Battery - Highest voltage'
   object_id: 'bt2_aux_batt_v_highest_day'
   device_class: 'voltage'
   unit_of_measurement: 'V'
 
-- name: 'Charging Amps - highest today'
+- name: 'Today - Charging Amps - Highest'
   object_id: 'bt2_charging_amps_highest_day'
   device_class: 'current'
   unit_of_measurement: 'A'
 
-- name: 'Input Power - highest today'
+- name: 'Today - Input Power - Highest'
   object_id: 'bt2_input_power_highest_day'
   device_class: 'power'
   unit_of_measurement: 'W'
 
-- name: 'Accumulated aH Today'
+- name: 'Today - Accumulated aH'
   object_id: 'bt2_accumulated_ah_day'
   device_class: 'energy'
   state_class: 'total_increasing'
   unit_of_measurement: 'Ah'
 
-- name: 'Generated Power Today'
+- name: 'Today - Generated Power'
   object_id: 'bt2_generated_power_day'
   device_class: 'energy'
   state_class: 'total_increasing'
   unit_of_measurement: 'Wh'
 
-- name: 'Total Working Days'
+- name: 'Stat - Total Working Days'
   object_id: 'bt2_total_working_days'
   unit_of_measurement: 'days'
 
-- name: 'Battery Over-Discharged Count'
+- name: 'Stat - Battery Over-Discharged Count'
   object_id: 'bt2_total_over_discharged_count'
 
-- name: 'Battery Fully Charged Count'
+- name: 'Stat - Battery Fully Charged Count'
   object_id: 'bt2_total_fully_charged_count'
 
-- name: 'Total Accumulated Amp Hours'
+- name: 'Stat - Total Accumulated Amp Hours'
   object_id: 'bt2_accumulated_ah_aux_batt'
   device_class: 'energy'
   unit_of_measurement: 'Ah'
 
-- name: 'Total Accumulated Power'
+- name: 'Stat - Total Energy Produced'
   object_id: 'bt2_accumulated_generated_watts'
   device_class: 'energy'
   state_class: 'total_increasing'
   unit_of_measurement: 'Wh'
-
-- name: 'Charging State Bits'
-  object_id: 'bt2_charging_state'
-
-- name: 'Error State Bits - 1'
-  object_id: 'bt2_error_bits_1'
-
-- name: 'Error State Bits - 2'
-  object_id: 'bt2_error_bits_2'
-  
-- name: "Solar Input Power"
-  object_id: bt2_solar_input_watts
-  device_class: 'power'
-  state_class: total
-  unit_of_measurement: 'Wh'
-  force_update: True
-
-
 
 
 
